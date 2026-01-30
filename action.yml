@@ -1,0 +1,39 @@
+name: "Setup probe-rs (remote-enabled)"
+description: "Installs probe-rs-tools and adds it to PATH."
+inputs:
+  version:
+    required: false
+    default: "v0.31.0"
+    description: The version of probe-rs to use
+  install-root:
+    required: false
+    default: "/opt/probe-rs"
+    description: The install location
+  git-url:
+    required: false
+    default: "https://github.com/probe-rs/probe-rs"
+    description: What probe-rs repo to use
+  features:
+    required: false
+    default: "remote"
+    description: What features to enable
+outputs:
+  install_root:
+    value: ${{ steps.install.outputs.install_root }}
+    description: Where probe rs was installed
+  bin_dir:
+    value: ${{ steps.install.outputs.bin_dir }}
+    description: Bin dir
+
+runs:
+  using: "composite"
+  steps:
+    - id: install
+      shell: bash
+      env:
+        PROBE_RS_VERSION: ${{ inputs.version }}
+        PROBE_RS_INSTALL_ROOT: ${{ inputs.install-root }}
+        PROBE_RS_GIT_URL: ${{ inputs.git-url }}
+        PROBE_RS_FEATURES: ${{ inputs.features }}
+      run: |
+        bash "${{ github.action_path }}/scripts/install-probe-rs.sh"
