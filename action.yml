@@ -3,7 +3,7 @@ description: "Installs probe-rs-tools and adds it to PATH."
 inputs:
   version:
     required: false
-    default: "v0.31.0"
+    default: "v0.32.0"
     description: The version of probe-rs to use
   install-root:
     required: false
