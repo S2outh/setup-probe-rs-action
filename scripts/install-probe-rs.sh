@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Inputs (env or defaults)
-PROBE_RS_VERSION="${PROBE_RS_VERSION:-v0.31.0}"          # e.g. v0.31.0
+PROBE_RS_VERSION="${PROBE_RS_VERSION:-v0.32.0}"          # e.g. v0.32.0
 PROBE_RS_INSTALL_ROOT="${PROBE_RS_INSTALL_ROOT:-/opt/probe-rs}"
 PROBE_RS_GIT_URL="${PROBE_RS_GIT_URL:-https://github.com/probe-rs/probe-rs}"
 PROBE_RS_FEATURES="${PROBE_RS_FEATURES:-remote}"
@@ -18,7 +18,7 @@ fi
 echo "Using INSTALL_ROOT=${INSTALL_ROOT}"
 
 BIN="${INSTALL_ROOT}/bin/probe-rs"
-REQ_VER="${PROBE_RS_VERSION#v}" # normalize: v0.31.0 -> 0.31.0
+REQ_VER="${PROBE_RS_VERSION#v}" # normalize: v0.32.0 -> 0.32.0
 
 installed_version() {
   if [ -x "${BIN}" ]; then
